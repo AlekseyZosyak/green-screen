@@ -1,19 +1,16 @@
-import Plus from "../plus/plus"
+import Plus from "../plus/plus";
+import Button from "../button/button";
 
 const App = () => {
 
     return (
-        <Plus/> 
+        <>
+            <Plus/> 
+            <Button/>
+        </>
     )
 }
 
 export default App;
 
 
-const toggleFullscreen = () => {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen();
-  } else {
-    document.exitFullscreen();
-  }
-};
