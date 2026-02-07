@@ -1,14 +1,16 @@
-const Button = () => {
 
-    const onToggleFullscreen = () => {
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen();
-        } else {
-            document.exitFullscreen();
-        }
-    };
+const Button = ({onPlay}) => {
+ 
 
-    return <button onClick={onToggleFullscreen}> full screen</button>;
+    // const onToggleFullscreen = () => {
+    //     if (!document.fullscreenElement) {
+    //         document.documentElement.requestFullscreen();
+    //     } else {
+    //         document.exitFullscreen();
+    //     }
+    // };
+
+    return <button onClick={onPlay}> full screen</button>;
 };
 
 
