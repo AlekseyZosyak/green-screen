@@ -1,40 +1,59 @@
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 
-import Marker from "../marker/marker";
-import Button from "../button/button";
+import Button from '../button/button';
 import ModeController from '../mode-controller/mode-controller';
-import Hero from "../hero/hero";
+import Hero from '../hero/hero';
+import Chromo from '../chromo/chromo';
 
 import './app.scss';
 
 const App = () => {
     const [play, setPlay] = useState(false);
-    const body = document.querySelector('body');
+
+    useEffect(() => {
+        const check = () => {
+            if (!document.fullscreenElement) {
+                setPlay(false);
+            }
+        };
+        document.addEventListener('fullscreenchange', check);
+
+        return () => {
+            document.removeEventListener('fullscreenchange', check);
+        };
+    }, []);
+
+    const onToggleFullscreen = () => {
+        if (!document.fullscreenElement) {
+            document.documentElement
+                .requestFullscreen()
+                .then(() => setPlay(true));
+        } else {
+            document.exitFullscreen();
+        }
+    };
+
+  
 
 
-        // const onPlay = () => {
-        //     setPlay(() => true)
-        // }
 
+    // const onPlay = () => {
+    //     setPlay(() => true);
+    // };
 
-    if (play) {
-        console.log(`??? ${play}`)
-        body.style.backgroundColor = 'green';
-    }
-
- 
+    // const end = () => {
+    //     setPlay(() => false);
+    // };
 
     return (
-        
-            <div className="app">
-                <Hero/>
-                   
-            </div>
-         
-     
-    )
-}
+        <div className="app">
+            {play ? (
+                <Chromo setPlay={setPlay} />
+            ) : (
+                <Hero onToggleFullscreen={onToggleFullscreen} />
+            )}
+        </div>
+    );
+};
 
 export default App;
-
-
