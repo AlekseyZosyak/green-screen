@@ -8,7 +8,7 @@ const Chromo = () => {
     return (
         <div className="chromo">
             <Marker />
-            <Hronomer />
+            <Hronomer /> 
         </div>
     );
 };

@@ -4,6 +4,7 @@ import Button from '../button/button';
 import ModeController from '../mode-controller/mode-controller';
 import Hero from '../hero/hero';
 import Chromo from '../chromo/chromo';
+import Conecter from '../conectr/conectr';
 import Hronomer from '../hronomer/hronomer';
 import Nav from '../nav/nav';
 
@@ -36,16 +37,10 @@ const App = () => {
     };
 
     return (
-        <BrowserRouter>
             <div className={play ? 'app' : 'app-ctatic'}>
-            {play ? (
-                <Chromo setPlay={setPlay} />
-            ) : (
-                <Hero onToggleFullscreen={onToggleFullscreen} />
-            )}
+            {play ? <Chromo setPlay={setPlay} /> : <Conecter onToggleFullscreen={onToggleFullscreen} />}
             
             </div>
-        </BrowserRouter>
     );
 };
 
