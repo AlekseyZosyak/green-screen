@@ -2,14 +2,16 @@ import './chromo.scss';
 import Marker from '../marker/marker';
 import Hronomer from '../hronomer/hronomer';
 
-const Chromo = ({timeCode}) => {
+const Chromo = ({hronomer, marker, screen}) => {
+    let showScreen = 'chromo ';
+    showScreen += +screen ? 'green' : 'blue';
+    const showHronomer = +hronomer ? <Hronomer/> : null;
+    const showMarkers = +marker ? <Marker /> : null;
 
-    console.log(`this is page Chromo : ${timeCode}`)
-    
     return (
-        <div className="chromo">
-            <Marker />
-            {timeCode ? <Hronomer /> : null}
+        <div className={showScreen}>
+            {showMarkers}
+            {showHronomer}
         </div>
     );
 };

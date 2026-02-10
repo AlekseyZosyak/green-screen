@@ -1,35 +1,41 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const SettingChromo = ({setTimeCode}) => {
-    const [timecode, setTimecode] = useState(1);
-    
-    useEffect(() => {
-        if (timecode === 1) {
-            setTimeCode(true);
-        } else {
-            setTimeCode(false);
-        }
-    }, [timecode]);
+const SettingChromo = ({asa, asa2, asa3, hronomer, marker, screen}) => {
+    const [timecode, setTimecode] = useState(hronomer);
+    const [markerSetting, setMarkerSetting] = useState(marker);
+    const [screenSetting, setScreenSetting] = useState(screen);
 
     return (
         <div>
-            <h1>{`this - ${timecode}`}</h1>
-
-            
-               
-
             <div>
                 <label htmlFor="time-code">Time code</label>
                 <span>Not</span>
-                <input type="range" id="time-code" min='0' max='1' volue='1' onChange={(e) => setTimecode(e.target.value)}/>
+                <input type="range" id="time-code" min={0} max={1} value={timecode} onChange={(e) => {
+                    setTimecode(e.target.value);
+                    asa(e.target.value);
+                    }}/>
                 <span>Yes</span>
             </div>
 
-     
+             <div>
+                <label htmlFor="marker-code">Marker</label>
+                <span>Not</span>
+                <input type="range" id="marker-code" min={0} max={1} value={markerSetting} onChange={(e) => {
+                    setMarkerSetting(e.target.value);
+                    asa2(e.target.value);
+                    }}/>
+                <span>Yes</span>
+            </div>
 
-      
-
-            
+             <div>
+                <label htmlFor="screen-code">Screen</label>
+                <span>blue</span>
+                <input type="range" id="screen-code" min={0} max={1} value={screenSetting} onChange={(e) => {
+                    setScreenSetting(e.target.value);
+                    asa3(e.target.value);
+                    }}/>
+                <span>green</span>
+            </div>
          
         </div>
     )

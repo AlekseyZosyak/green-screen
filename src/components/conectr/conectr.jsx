@@ -5,7 +5,7 @@ import SettingPage from '../pages/SettingPage';
 
 import Nav from "../nav/nav";
 
-const Conecter = ({onToggleFullscreen, setTimeCode}) => {
+const Conecter = ({onToggleFullscreen, asa, asa2, asa3, hronomer, marker, screen}) => {
     
 
     return (
@@ -13,9 +13,9 @@ const Conecter = ({onToggleFullscreen, setTimeCode}) => {
             <BrowserRouter>
                 <Nav/>
                     <Routes>
-                        <Route path='/home' element={<TestPage onToggleFullscreen={onToggleFullscreen} />}></Route>
+                        <Route path='/' element={<TestPage onToggleFullscreen={onToggleFullscreen} />}></Route>
                         <Route path='/about' element={<AboutPage/>}></Route>
-                        <Route path='/setting' element={<SettingPage setTimeCode={setTimeCode}/>}></Route>
+                        <Route path='/setting' element={<SettingPage asa={asa} asa2={asa2} asa3={asa3} hronomer={hronomer} marker={marker} screen={screen}/>}></Route>
                     </Routes>
             </BrowserRouter>
         </>

@@ -1,20 +1,27 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router';
-import Button from '../button/button';
-import ModeController from '../mode-controller/mode-controller';
-import Hero from '../hero/hero';
 import Chromo from '../chromo/chromo';
 import Conecter from '../conectr/conectr';
-import Hronomer from '../hronomer/hronomer';
-import Nav from '../nav/nav';
 
 import './app.scss';
 
 const App = () => {
     const [play, setPlay] = useState(false);
-    const [timeCode, setTimeCode] = useState(null);
+    const [hronomer, setHronomer] = useState(1);
+    const [marker, setMarker] = useState(1);
+    const [screen, setScreen] = useState(1);
 
-    console.log(`App - ${timeCode}`)
+    const asa = (times) => {
+        setHronomer(times);
+        console.log(`times = ${hronomer}`);
+    };
+
+    const asa2 = (times) => {
+        setMarker(times);
+    };
+
+    const asa3 = (times) => {
+        setScreen(times);
+    };
 
     useEffect(() => {
         const check = () => {
@@ -40,9 +47,21 @@ const App = () => {
     };
 
     return (
-            <div className={play ? 'app' : 'app-ctatic'}>
-            {play ? <Chromo setPlay={setPlay} timeCode={timeCode}/> : <Conecter onToggleFullscreen={onToggleFullscreen} setTimeCode={setTimeCode}/>}
-            </div>
+        <div className={play ? 'app' : 'app-ctatic'}>
+            {play ? (
+                <Chromo setPlay={setPlay} hronomer={hronomer} marker={marker} screen={screen}/>
+            ) : (
+                <Conecter
+                    onToggleFullscreen={onToggleFullscreen}
+                    asa={asa}
+                    asa2={asa2}
+                    asa3={asa3}
+                    hronomer={hronomer}
+                    marker={marker}
+                    screen={screen}
+                />
+            )}
+        </div>
     );
 };
 
